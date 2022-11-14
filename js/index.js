@@ -53,9 +53,6 @@ function getRandomList(rangeNumMin, rangeNumMax, listLenght) {
     return randomList;
 };
 
-function result(user, match, hideEl, showEl, ) {
-
-}
 
 // VARIABILI *********************************************************
 
@@ -68,4 +65,42 @@ const matchNumbersList = [];
 for (i = 0; i < pcNumbersList.length; i++) {
     el(`#n-${i + 1}`).innerHTML = pcNumbersList[i];
 };
+
+setTimeout(function(){
+
+    el('.my-numbers-container').classList.replace('d-flex', 'd-none');
+
+}, 30000);
+
+setTimeout(function(){
+
+    while (userNumbersList.length < 5) {
+        let number = parseInt(prompt('Inserisci un numero da 0 a 9'));
+        if (isNaN(number) || number === "" || number === undefined || number < 0 || number > 9) {
+
+        } else if(userNumbersList.includes(number)){
+
+        }else{
+            userNumbersList.push(number);
+
+            if (pcNumbersList.includes(number)) {
+                matchNumbersList.push(number);
+            };
+        };
+    };
+
+    if (matchNumbersList.length === 0) {
+        el('h1').innerHTML = `Hai una pessima memoria!! Non hai indovinato nessun numero!!`
+    } else {
+        el('h1').innerHTML = `Bravo hai ricordato ${matchNumbersList.length} numeri! I numeri indovinati sono:`
+
+        for (i = 0; i < matchNumbersList.length; i++) {
+            el('h1').innerHTML += ` ${matchNumbersList[i]}`;
+        }
+    }
+
+    el('.my-output').classList.replace('d-none', 'd-block');
+
+}, 30050);
+
 
